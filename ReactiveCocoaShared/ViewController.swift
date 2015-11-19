@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let label = UILabel()
-        label.numberOfLines = 2;
+        label.numberOfLines = 3;
         label.textColor = UIColor.blackColor()
         view.addSubview(label)
         
@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         
         manager.didReceiveData = {(data) in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                label.text = "\(data.fromDeviceIdentifier):\n\(data.value)"
+                label.text = "\(data)"
             })
         }
     }

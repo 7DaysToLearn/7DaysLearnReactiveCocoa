@@ -10,8 +10,15 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 #define DATA_GENERATE_TIME_INTERVAL 0.5
+#define BINDING_TIME 3
+#define DEVICE_NUMBER 2
+#define TIMEOUT_INTERVAL (BINDING_TIME+10)
 
 @implementation BLEData
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%@\n%@\n%@-%@", self.date, self.fromDeviceIdentifier, @(self.length), @(self.value)];
+}
 
 @end
 
@@ -40,9 +47,10 @@
     BLEData *data = [BLEData new];
     data.value = arc4random()%7+32;
     data.RSSI = arc4random()%100;
-    data.length = arc4random()%20;
-    int identifier = arc4random()%5;
+    data.length = arc4random()%20 + 13;
+    int identifier = arc4random()%DEVICE_NUMBER;
     data.fromDeviceIdentifier = @(identifier);
+    data.date = [NSDate date];
     return data;
 }
 

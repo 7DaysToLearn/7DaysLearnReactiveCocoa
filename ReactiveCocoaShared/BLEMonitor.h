@@ -15,6 +15,8 @@
  */
 @property (nonatomic) int value;
 
+@property (strong, nonatomic) NSDate *date;
+
 /**
  *  信号强度
  */
