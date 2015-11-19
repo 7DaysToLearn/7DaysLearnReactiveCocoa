@@ -26,10 +26,17 @@
 
 - (void)start {
     @weakify(self);
-    [[self dataSignal]
+    RACSignal *dataSignal = [self dataSignal];
+    dataSignal = [self binding:dataSignal];
+    dataSignal = [self filter:dataSignal];
+    dataSignal = [self timeout:dataSignal];
+    
+    [dataSignal
      subscribeNext:^(id x) {
          @strongify(self);
          [self didReceiveData:x];
+     } error:^(NSError *error) {
+         NSLog(@"超时!");
      }];
 }
 
@@ -57,12 +64,52 @@
 - (RACSignal *)dataSignal {
     @weakify(self);
     return [[[[[RACSignal interval:DATA_GENERATE_TIME_INTERVAL onScheduler:[RACScheduler scheduler]]
-              takeUntil:[self rac_signalForSelector:@selector(stop)]]
-             takeUntil:[self rac_signalForSelector:_cmd]]
-            merge:[RACSignal return:[NSDate date]]]
+               takeUntil:[self rac_signalForSelector:@selector(stop)]]
+              takeUntil:[self rac_signalForSelector:_cmd]]
+             merge:[RACSignal return:[NSDate date]]]
             map:^id(id value) {
                 @strongify(self);
                 return [self generateData];
             }];
+}
+
+- (RACSignal *)binding:(RACSignal *)dataSignal {
+    RACSubject *dataSubject = [RACSubject subject];
+    RACMulticastConnection *connection = [dataSignal multicast:dataSubject];
+    [connection connect];
+    
+    RACSignal *bindingSignal = [[[dataSubject bufferWithTime:BINDING_TIME onScheduler:[RACScheduler scheduler]]
+                                 take:1]
+                                flattenMap:^RACStream *(RACTuple *value) {
+                                    NSArray *datas = [value allObjects];
+                                    BLEData *maxData;
+                                    for (BLEData *data in datas) {
+                                        if (maxData == nil || maxData.RSSI < data.RSSI) {
+                                            maxData = data;
+                                        }
+                                    }
+                                    return [dataSubject filter:^BOOL(BLEData *value) {
+                                        return [maxData.fromDeviceIdentifier isEqualToNumber:value.fromDeviceIdentifier];
+                                    }];
+                                }];
+    return bindingSignal;
+}
+
+- (RACSignal *)filter:(RACSignal *)dataSignal {
+    return [dataSignal filter:^BOOL(BLEData *value) {
+        return value.length > 15;
+    }];
+}
+
+- (RACSignal *)timeout:(RACSignal *)dataSignal {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        RACDisposable *dataDisposable = [dataSignal subscribe:subscriber];
+        RACDisposable *timeoutDisposable = [[[RACSignal interval:TIMEOUT_INTERVAL onScheduler:[RACScheduler scheduler]]
+                                             takeUntil:dataSignal].repeat
+                                            subscribeNext:^(id x) {
+                                                [subscriber sendError:[NSError errorWithDomain:RACSignalErrorDomain code:RACSignalErrorTimedOut userInfo:nil]];
+                                            }];
+        return [RACCompoundDisposable compoundDisposableWithDisposables:@[dataDisposable, timeoutDisposable]];
+    }];
 }
 @end
