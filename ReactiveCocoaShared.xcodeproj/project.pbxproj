@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C43ADA834B4A6A41F6071AB6 /* Pods_ReactiveCocoaShared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F4898F92CF803A9EF8C382C /* Pods_ReactiveCocoaShared.framework */; };
 		EF8A6C5E1BFC5E4900FB9185 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8A6C5D1BFC5E4900FB9185 /* AppDelegate.swift */; };
 		EF8A6C601BFC5E4900FB9185 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8A6C5F1BFC5E4900FB9185 /* ViewController.swift */; };
 		EF8A6C631BFC5E4900FB9185 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF8A6C611BFC5E4900FB9185 /* Main.storyboard */; };
 		EF8A6C651BFC5E4900FB9185 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF8A6C641BFC5E4900FB9185 /* Assets.xcassets */; };
 		EF8A6C681BFC5E4900FB9185 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF8A6C661BFC5E4900FB9185 /* LaunchScreen.storyboard */; };
+		EF8A6C751BFD668C00FB9185 /* BLEMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = EF8A6C741BFD668C00FB9185 /* BLEMonitor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F4898F92CF803A9EF8C382C /* Pods_ReactiveCocoaShared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactiveCocoaShared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		764F67365F8B6C02C89DF9E5 /* Pods-ReactiveCocoaShared.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactiveCocoaShared.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReactiveCocoaShared/Pods-ReactiveCocoaShared.release.xcconfig"; sourceTree = "<group>"; };
+		8E0272B56D5AFFFA4F615E34 /* Pods-ReactiveCocoaShared.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactiveCocoaShared.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReactiveCocoaShared/Pods-ReactiveCocoaShared.debug.xcconfig"; sourceTree = "<group>"; };
 		EF8A6C5A1BFC5E4900FB9185 /* ReactiveCocoaShared.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactiveCocoaShared.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF8A6C5D1BFC5E4900FB9185 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF8A6C5F1BFC5E4900FB9185 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +27,10 @@
 		EF8A6C641BFC5E4900FB9185 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF8A6C671BFC5E4900FB9185 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF8A6C691BFC5E4900FB9185 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF8A6C711BFC5EC200FB9185 /* RAC4Shared.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RAC4Shared.playground; sourceTree = "<group>"; };
+		EF8A6C721BFD668C00FB9185 /* ReactiveCocoaShared-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReactiveCocoaShared-Bridging-Header.h"; sourceTree = "<group>"; };
+		EF8A6C731BFD668C00FB9185 /* BLEMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEMonitor.h; sourceTree = "<group>"; };
+		EF8A6C741BFD668C00FB9185 /* BLEMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEMonitor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +38,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C43ADA834B4A6A41F6071AB6 /* Pods_ReactiveCocoaShared.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C14E95575CB3CA2D3C7A194 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F4898F92CF803A9EF8C382C /* Pods_ReactiveCocoaShared.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD79BC48005F81B9CAFE8EC1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8E0272B56D5AFFFA4F615E34 /* Pods-ReactiveCocoaShared.debug.xcconfig */,
+				764F67365F8B6C02C89DF9E5 /* Pods-ReactiveCocoaShared.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		EF8A6C511BFC5E4800FB9185 = {
 			isa = PBXGroup;
 			children = (
+				EF8A6C711BFC5EC200FB9185 /* RAC4Shared.playground */,
 				EF8A6C5C1BFC5E4900FB9185 /* ReactiveCocoaShared */,
 				EF8A6C5B1BFC5E4900FB9185 /* Products */,
+				CD79BC48005F81B9CAFE8EC1 /* Pods */,
+				1C14E95575CB3CA2D3C7A194 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +90,9 @@
 				EF8A6C641BFC5E4900FB9185 /* Assets.xcassets */,
 				EF8A6C661BFC5E4900FB9185 /* LaunchScreen.storyboard */,
 				EF8A6C691BFC5E4900FB9185 /* Info.plist */,
+				EF8A6C731BFD668C00FB9185 /* BLEMonitor.h */,
+				EF8A6C741BFD668C00FB9185 /* BLEMonitor.m */,
+				EF8A6C721BFD668C00FB9185 /* ReactiveCocoaShared-Bridging-Header.h */,
 			);
 			path = ReactiveCocoaShared;
 			sourceTree = "<group>";
@@ -71,9 +104,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF8A6C6C1BFC5E4900FB9185 /* Build configuration list for PBXNativeTarget "ReactiveCocoaShared" */;
 			buildPhases = (
+				DAE97E028D92DD4439ABF33C /* Check Pods Manifest.lock */,
 				EF8A6C561BFC5E4800FB9185 /* Sources */,
 				EF8A6C571BFC5E4800FB9185 /* Frameworks */,
 				EF8A6C581BFC5E4800FB9185 /* Resources */,
+				08DA15030D0289B7BDD8F613 /* Embed Pods Frameworks */,
+				3A6B2D22D89C22E7A20A6E13 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,11 +166,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		08DA15030D0289B7BDD8F613 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReactiveCocoaShared/Pods-ReactiveCocoaShared-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3A6B2D22D89C22E7A20A6E13 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReactiveCocoaShared/Pods-ReactiveCocoaShared-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DAE97E028D92DD4439ABF33C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EF8A6C561BFC5E4800FB9185 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF8A6C751BFD668C00FB9185 /* BLEMonitor.m in Sources */,
 				EF8A6C601BFC5E4900FB9185 /* ViewController.swift in Sources */,
 				EF8A6C5E1BFC5E4900FB9185 /* AppDelegate.swift in Sources */,
 			);
@@ -247,23 +332,30 @@
 		};
 		EF8A6C6D1BFC5E4900FB9185 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E0272B56D5AFFFA4F615E34 /* Pods-ReactiveCocoaShared.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ReactiveCocoaShared/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cvte.ReactiveCocoaShared;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ReactiveCocoaShared/ReactiveCocoaShared-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		EF8A6C6E1BFC5E4900FB9185 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 764F67365F8B6C02C89DF9E5 /* Pods-ReactiveCocoaShared.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ReactiveCocoaShared/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cvte.ReactiveCocoaShared;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ReactiveCocoaShared/ReactiveCocoaShared-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -286,6 +378,7 @@
 				EF8A6C6E1BFC5E4900FB9185 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

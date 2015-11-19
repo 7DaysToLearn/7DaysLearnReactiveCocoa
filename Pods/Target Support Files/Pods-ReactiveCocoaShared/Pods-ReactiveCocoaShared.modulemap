@@ -1,0 +1,6 @@
+framework module Pods_ReactiveCocoaShared {
+  umbrella header "Pods-ReactiveCocoaShared-umbrella.h"
+
+  export *
+  module * { export * }
+}
