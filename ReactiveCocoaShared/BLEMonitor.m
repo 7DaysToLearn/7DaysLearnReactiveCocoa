@@ -7,6 +7,9 @@
 //
 
 #import "BLEMonitor.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
+#define DATA_GENERATE_TIME_INTERVAL 0.5
 
 @implementation BLEData
 
@@ -15,12 +18,16 @@
 @implementation BLEMonitor
 
 - (void)start {
-    //TODO:每0.5秒自动生成一个随机数据
-    [self didReceiveData:[self generateData]];
+    @weakify(self);
+    [[self dataSignal]
+     subscribeNext:^(id x) {
+         @strongify(self);
+         [self didReceiveData:x];
+     }];
 }
 
 - (void)stop {
-    //STUB
+    //Do nothing
 }
 
 - (void)didReceiveData:(BLEData *)data {
@@ -39,4 +46,15 @@
     return data;
 }
 
+- (RACSignal *)dataSignal {
+    @weakify(self);
+    return [[[[[RACSignal interval:DATA_GENERATE_TIME_INTERVAL onScheduler:[RACScheduler scheduler]]
+              takeUntil:[self rac_signalForSelector:@selector(stop)]]
+             takeUntil:[self rac_signalForSelector:_cmd]]
+            merge:[RACSignal return:[NSDate date]]]
+            map:^id(id value) {
+                @strongify(self);
+                return [self generateData];
+            }];
+}
 @end
